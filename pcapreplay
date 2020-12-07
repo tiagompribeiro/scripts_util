@@ -1,0 +1,27 @@
+#!/bin/bash
+#		Run on sudo su	ROOT needed
+# como correr ???? tcpreplay
+#
+#	-k option will preload the PCAP file into memory before testing
+#	-t option will send as quickly as possible
+#	--loop to add a loop not implemented
+
+helpFunction()
+{
+   	echo ""
+   	echo "Usage: pcapreplay path_to_pcap  eth_interface"
+	echo ""
+	exit 1 # Exit script after printing help
+}
+
+
+# Print helpFunction in case parameters are empty
+if [ -z "$1" ] || [ -z "$2" ]
+then
+	echo "";
+   	echo "Some or all of the parameters are empty";
+   	helpFunction
+fi
+
+sudo tcpreplay -i $2 -tK $1
+#echo "1234567890"
